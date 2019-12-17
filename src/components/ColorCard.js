@@ -8,7 +8,7 @@ class ColorCard extends Component {
 
   render() {
     return (
-      <div className="mt-4 bt-2">
+      <div className="align-middle">
         <CompactPicker />
       </div>
     );

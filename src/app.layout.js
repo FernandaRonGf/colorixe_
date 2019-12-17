@@ -14,13 +14,8 @@ class AppLayout extends Component {
         return (
             <div>
       <div>
-          <Navigator />
-      </div>
-      <div>
-          <ImageInput/>
-      </div>
-      <div>
-          <ColorCard/>
+      <ColorCard/>
+     <ImageInput/>   
       </div>
   </div>
         )

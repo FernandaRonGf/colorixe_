@@ -8,11 +8,12 @@ class Likes extends Component {
 
     render(){
         return (
-            <div>
-                <CirclePicker 
+            <div className="d-flex flex-column">
+                <div className='align-center'
+><TwitterPicker />
+    </div>                <CirclePicker 
                 width={"14"}
                 />
-<TwitterPicker />
             </div>
         )
     }
