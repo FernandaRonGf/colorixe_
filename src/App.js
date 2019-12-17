@@ -1,16 +1,25 @@
 import React from 'react';
-import logo from './logo.svg';
+import {BrowserRouter, Route, Switch} from 'react-router-dom'
 import './App.css';
-import ColorCard from './components/ColorCard';
-import Header from './components/Header'
-import ImageInput from './components/ImageInput'
+import  AppLayout  from "./app.layout";
+import Login from "./components/auth/Login";
+import Likes from './components/Likes'
+
 
 function App() {
   return (
     <div className="App">
-  <Header />
-  <ColorCard />
-  <ImageInput/>
+      <BrowserRouter >
+      <Route 
+      exact path="/"
+      component={Login}/>
+      <Route 
+       exact path="/colorixe"
+      component={AppLayout}/> 
+      <Route 
+        exact path="/colorixe/likes"
+      component={Likes}/>
+      </BrowserRouter>
     </div>
   );
 }
