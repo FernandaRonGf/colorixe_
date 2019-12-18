@@ -9,6 +9,7 @@ class ImageInput extends Component {
     this.state = {
       img:'',
       paletteColors:null,
+      favorite:[]
      
     }
   }
@@ -31,21 +32,30 @@ for (let color in result) {
 }
     this.setState({
       paletteColors: hex
+     
     })
   }
 
+  addToFavorites = () => {
+    let pallete = this.state.paletteColors
+axios.post('https://colorixe.herokuapp.com/pallete', {
+  colors:{color:pallete}
+}).then(data => {
+  const colors = JSON.parse(data.config.data)
+  this.setState({
+    favorite :  colors
+  })
+})
+  }
   onImageSubmit = e => {
     let reader = new FileReader();
     reader.readAsDataURL(e.target.files[0])
-  console.log(reader)
 reader.onload =(e) => {
   this.setState({img: reader.result})
 }
 
   };
   render() {
- 
-    console.log(this.state)
     return (
       <div class="container" style={{ marginTop: "50px", width: "30%" }}>
         <div class="custom-file">
@@ -65,7 +75,11 @@ reader.onload =(e) => {
   <Circle 
 backgroundColor={this.state.paletteColors} />
 )}
-
+<button 
+type='button'
+class="btn btn-primary btn-info"
+onClick={this.addToFavorites}
+> Favoritos</button>
         </div>
       </div>
     );
